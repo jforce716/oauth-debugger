@@ -1,0 +1,50 @@
+<div class="card">
+    <div class="card-body">
+        <form id="authForm" [formGroup]="authForm">
+            <div class="form-group">
+                <label for="loginUrl" class="required-field">Login URL:</label>
+                <input class="form-control" id="loginUrl" type="text" 
+                       [ngClass]="{'is-invalid': isInvalid('loginUrl')}"
+                    formControlName="loginUrl">
+                <div class="text-danger" *ngIf="isInvalid('clientId')">
+                    <small>Login URL is required</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="clientId" class="required-field">Client Id:</label>
+                <input class="form-control" id="clientId" type="text" 
+                       [ngClass]="{'is-invalid': isInvalid('clientId')}"
+                    formControlName="clientId">
+                <div class="text-danger" *ngIf="isInvalid('clientId')">
+                    <small>Client Id is required</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="clientKey" class="required-field">Client Key:</label>
+                <input class="form-control" id="clientKey" type="text"
+                    [ngClass]="{'is-invalid': isInvalid('clientKey')}" formControlName="clientKey">
+                <div class="text-danger" *ngIf="isInvalid('clientKey')">
+                    <small>Client Key is required</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input class="form-control" id="state" type="text" formControlName="state">
+            </div>
+
+            <app-key-value-editor title="Login Parameters" 
+                                  [datasource]="loginParameters">
+            </app-key-value-editor>
+            <br>
+            <app-key-value-editor title="Token Parameters" 
+                                  [datasource]="tokenParameters">
+            </app-key-value-editor>
+            <br>
+            <button class="btn btn-primary" type="button" 
+                    [disabled]="!authForm.valid" (click)="login()">Login</button>
+        </form>
+    </div>
+</div>

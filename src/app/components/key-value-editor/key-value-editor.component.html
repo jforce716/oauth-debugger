@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-header">
+        {{ title }}
+        <button type="button" class="btn btn-primary btn-sm float-right">Add</button>
+    </div>
+    <div class="card-body">
+        <span *ngIf="length == 0">No parameters</span>
+        <table class="table table-striped" *ngIf="length > 0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                    <th>
+                        <button type="button" class="btn btn-sm btn-secondary">Edit</button>
+                        <button type="button" class="btn btn-sm btn-secondary">Delete</button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of loginParameters | async">
+                    <td>{{ p.name }}</td>
+                    <td>{{ p.value }}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-secondary">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
